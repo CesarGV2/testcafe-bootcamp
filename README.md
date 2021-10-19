@@ -12,7 +12,7 @@ using Testcafe and POM pattern to creates the automated test. For the test repor
    - command: *npm run test-smoke*.
 -  test-login:runs all the test for login feature.
    - command: *npm run test-login*.
--  test-loginHeadless: 
+-  test-loginHeadless: runs all the test for login feature on chrome y safari on headless mode.
    - command: *npm run test-loginHeadless*
 - test-createTask: runs all the tests for Create Task feature.
    - command: *npm run test-createTask*
