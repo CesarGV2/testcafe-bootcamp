@@ -1,0 +1,110 @@
+[
+  {
+    "description": "Create Project Tests",
+    "elements": [
+      {
+        "id": "ScenarioAs a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+            "result": {
+              "duration": 26012,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Create Project Tests",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "95.0.4638.54"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15.7"
+      },
+      "reportTime": "2021-10-19T21:14:36.443Z",
+      "startTime": "2021-10-19T21:14:10.419Z"
+    },
+    "name": "Create Project Tests",
+    "runInfo": {
+      "endTime": "2021-10-19T21:14:36.443Z",
+      "passed": 1,
+      "startTime": "2021-10-19T21:14:10.419Z",
+      "testCount": 1,
+      "userAgents": [
+        "Chrome 95.0.4638.54 / macOS 10.15.7"
+      ],
+      "warnings": [
+        "The \"filter\" option from the configuration file will be ignored."
+      ]
+    },
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@logged"
+      },
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@create"
+      },
+      {
+        "line": 0,
+        "name": "@new"
+      },
+      {
+        "line": 0,
+        "name": "@project"
+      },
+      {
+        "line": 0,
+        "name": "@select"
+      },
+      {
+        "line": 0,
+        "name": "@color"
+      },
+      {
+        "line": 0,
+        "name": "@add"
+      },
+      {
+        "line": 0,
+        "name": "@'favorites'"
+      },
+      {
+        "line": 0,
+        "name": "@tests"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:1"
+  }
+]

@@ -1,4 +1,5 @@
 import { Selector, t } from "testcafe";
+import homePage from "./homePage";
 
 
 class LoginPage{
@@ -10,10 +11,11 @@ class LoginPage{
     }
 
     async submitLoginForm(username, password){
+        await homePage.goToLoginPage()
         await t
         .typeText(this.usernameInput,username)
         .typeText(this.passwordInput,password)
-        .click(this.loginButton);
+        .click(this.loginButton)
     }
 }
 

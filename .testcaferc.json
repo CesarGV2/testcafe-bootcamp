@@ -1,5 +1,6 @@
 {
-    "assertionTimeout": 2000,
-    "pageLoadTimeout": 1000,
-    "selectorTimeout": 1000
+    "assertionTimeout": 8000,
+    "pageLoadTimeout": 8000,
+    "selectorTimeout": 8000,
+    "speed": 0.9
 }

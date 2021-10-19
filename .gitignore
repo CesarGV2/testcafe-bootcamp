@@ -1,3 +1,5 @@
-
+.env
 node_modules
 package-lock.json
+reports/htmlReports/cucumberReports/features
+reports/htmlReports/cucumberReports/assets
