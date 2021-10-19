@@ -1,0 +1,439 @@
+[
+  {
+    "description": "Create Project Tests",
+    "elements": [
+      {
+        "id": "ScenarioAs a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+            "result": {
+              "duration": 11253,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Create Project Tests",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "94.0.4606.81"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15.7"
+      },
+      "reportTime": "2021-10-18T20:58:43.291Z",
+      "startTime": "2021-10-18T20:57:40.122Z"
+    },
+    "name": "Create Project Tests",
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@logged"
+      },
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@create"
+      },
+      {
+        "line": 0,
+        "name": "@new"
+      },
+      {
+        "line": 0,
+        "name": "@project"
+      },
+      {
+        "line": 0,
+        "name": "@select"
+      },
+      {
+        "line": 0,
+        "name": "@color"
+      },
+      {
+        "line": 0,
+        "name": "@add"
+      },
+      {
+        "line": 0,
+        "name": "@'favorites'"
+      },
+      {
+        "line": 0,
+        "name": "@tests"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:1"
+  },
+  {
+    "description": "Create Task Tests",
+    "elements": [
+      {
+        "id": "ScenarioAs a logged in user I should be able to create a task with today as due date",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create a task with today as due date",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create a task with today as due date",
+            "result": {
+              "duration": 8305,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create a task with today as due date</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a logged in user I should be able to create a task with tomorrow as due date",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create a task with tomorrow as due date",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create a task with tomorrow as due date",
+            "result": {
+              "duration": 10007,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create a task with tomorrow as due date</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a logged in user I should be able to create 10 tasks with today as due date",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create 10 tasks with today as due date",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create 10 tasks with today as due date",
+            "result": {
+              "duration": 25402,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create 10 tasks with today as due date</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Create Task Tests",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "94.0.4606.81"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15.7"
+      },
+      "reportTime": "2021-10-18T20:58:43.291Z",
+      "startTime": "2021-10-18T20:57:40.122Z"
+    },
+    "name": "Create Task Tests",
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@logged"
+      },
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@create"
+      },
+      {
+        "line": 0,
+        "name": "@tasks"
+      },
+      {
+        "line": 0,
+        "name": "@today"
+      },
+      {
+        "line": 0,
+        "name": "@due"
+      },
+      {
+        "line": 0,
+        "name": "@date"
+      },
+      {
+        "line": 0,
+        "name": "@task"
+      },
+      {
+        "line": 0,
+        "name": "@tomorrow"
+      },
+      {
+        "line": 0,
+        "name": "@tests"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1"
+  },
+  {
+    "description": "Login test",
+    "elements": [
+      {
+        "id": "ScenarioAs a user I should be able to login with valid credentials",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should be able to login with valid credentials",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should be able to login with valid credentials",
+            "result": {
+              "duration": 3793,
+              "error_message": "1) ReferenceError: projectpage is not defined\n\n   Browser: Chrome 94.0.4606.81 / macOS 10.15.7\n\n      10 | test.meta({\"type\":\"smoke\", \"type\":\"regression\"})('As a user I should be able to login with valid credentials', async (t) => {\n      11 |     await t\n      12 |         .useRole(STANDARD_USER)\n      13 |     await t\n      14 |         .wait(2000)\n   --------------------------------------------\n    &rarr; 15 |         .expect(projectpage.projectName.exists).ok()\n   --------------------------------------------\n      16 |     \n      17 | });\n      18 | \n      19 | test.meta(\"type\",\"regression\")('As a user I should not be able to login with incorrect email', async (t) => {\n      20 |     await loginpage.submitLoginForm(CREDENTIALS.STANDARD_USER.INVALID_USERNAME, CREDENTIALS.STANDARD_USER.PASSWORD)\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:15:17)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:232)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:570)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should be able to login with valid credentials</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a user I should not be able to login with incorrect email",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should not be able to login with incorrect email",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should not be able to login with incorrect email",
+            "result": {
+              "duration": 1915,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should not be able to login with incorrect email</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a user I should not be able to login with incorrect password",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should not be able to login with incorrect password",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should not be able to login with incorrect password",
+            "result": {
+              "duration": 2421,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should not be able to login with incorrect password</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a user I should not be able to login with incorrect email and password",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should not be able to login with incorrect email and password",
+        "skipped": true,
+        "sourceLine": "undefined",
+        "status": "skipped",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should not be able to login with incorrect email and password",
+            "result": {
+              "duration": 1,
+              "status": "skipped"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should not be able to login with incorrect email and password</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Login test",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "94.0.4606.81"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15.7"
+      },
+      "reportTime": "2021-10-18T20:58:43.291Z",
+      "startTime": "2021-10-18T20:57:40.122Z"
+    },
+    "name": "Login test",
+    "runInfo": {
+      "endTime": "2021-10-18T20:58:43.291Z",
+      "passed": 6,
+      "startTime": "2021-10-18T20:57:40.122Z",
+      "testCount": 7,
+      "userAgents": [
+        "Chrome 94.0.4606.81 / macOS 10.15.7"
+      ],
+      "warnings": []
+    },
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@login"
+      },
+      {
+        "line": 0,
+        "name": "@incorrect"
+      },
+      {
+        "line": 0,
+        "name": "@email"
+      },
+      {
+        "line": 0,
+        "name": "@password"
+      },
+      {
+        "line": 0,
+        "name": "@valid"
+      },
+      {
+        "line": 0,
+        "name": "@credentials"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1"
+  }
+]

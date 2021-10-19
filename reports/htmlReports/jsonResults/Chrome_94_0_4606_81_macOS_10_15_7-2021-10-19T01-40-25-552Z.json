@@ -1,0 +1,273 @@
+[
+  {
+    "description": "Create Project Tests",
+    "elements": [
+      {
+        "id": "ScenarioAs a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+            "result": {
+              "duration": 6427,
+              "error_message": "1) The specified selector does not match any element in the DOM tree.\n\n    > | Selector('[aria-label=\"Add Project\"]')\n\n   Browser: Chrome 94.0.4606.81 / macOS 10.15.7\n\n      71 |         }\n      72 |     }    \n      73 | \n      74 |     async createProject(projectname){\n      75 |         await t\n   --------------------------------------------\n    &rarr; 76 |         .click(commonpage.addProjectButton)\n   --------------------------------------------\n      77 |         .typeText(this.projectNameInput,projectname)\n      78 |         .click(this.projectColorDropdown)\n      79 |         .click(this.colorName)\n      80 |         .click(this.addtoFavoriteSwitch)\n      81 |         .click(this.confirmationButtonModal)\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:76:10)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:266)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:604)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:769)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:510)\n      at ProjectPage.createProject (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:74:37)\n\n      15 |         .expect(projectpage.favoriteProject.exists)\n      16 |         .notOk()\n      17 |     })\n      18 | \n      19 |     test.meta('type','smoke')(\"As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'\", async (t) => {\n   --------------------------------------------\n    &rarr; 20 |         await projectpage.createProject(PROJECTS.PROJECT_NAME)\n   --------------------------------------------\n      21 |         await t\n      22 |             .expect(projectpage.favorite.exists)\n      23 |             .ok()\n      24 |             .expect(projectpage.colorName.exists)\n      25 |             .ok()\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:20:27)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:266)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:604)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:769)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:510)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:19:5)\n2) - Error in fixture.afterEach hook -\n   The specified selector does not match any element in the DOM tree.\n\n    > | Selector('.ist_button')\n      |   .withExactText('Cancel')\n\n   Browser: Chrome 94.0.4606.81 / macOS 10.15.7\n\n      84 |         .click(this.editProjectOption)\n      85 |     }\n      86 | \n      87 |     async deleteProject(){\n      88 |        await t\n   --------------------------------------------\n    &rarr; 89 |         .click(this.cancelButtonModal)\n   --------------------------------------------\n      90 |         .click(this.favoriteProject)\n      91 |         .click(this.projectOptionsButton)\n      92 |         .click(this.deleteProjectOption)\n      93 |         .click(this.confirmationButtonModal)\n      94 |         .wait(900)\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:89:10)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:266)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:604)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:769)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:510)\n      at ProjectPage.deleteProject (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:87:26)\n2) - Error in fixture.afterEach hook -\n   The specified selector does not match any element in the DOM tree.\n\n    > | Selector('.ist_button')\n      |   .withExactText('Cancel')\n\n   Browser: Chrome 94.0.4606.81 / macOS 10.15.7\n\n       8 |     .beforeEach(async (t) => {\n       9 |         await t.useRole(STANDARD_USER)\n      10 |     })\n      11 |     \n      12 |     .afterEach(async (t) => {\n   --------------------------------------------\n    &rarr; 13 |         await projectpage.deleteProject()\n   --------------------------------------------\n      14 |         await t\n      15 |         .expect(projectpage.favoriteProject.exists)\n      16 |         .notOk()\n      17 |     })\n      18 | \n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:13:27)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:266)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:604)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:769)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:510)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:7:1)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Create Project Tests",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "94.0.4606.81"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15.7"
+      },
+      "reportTime": "2021-10-19T01:40:25.552Z",
+      "startTime": "2021-10-19T01:40:09.680Z"
+    },
+    "name": "Create Project Tests",
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@logged"
+      },
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@create"
+      },
+      {
+        "line": 0,
+        "name": "@new"
+      },
+      {
+        "line": 0,
+        "name": "@project"
+      },
+      {
+        "line": 0,
+        "name": "@select"
+      },
+      {
+        "line": 0,
+        "name": "@color"
+      },
+      {
+        "line": 0,
+        "name": "@add"
+      },
+      {
+        "line": 0,
+        "name": "@'favorites'"
+      },
+      {
+        "line": 0,
+        "name": "@tests"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:1"
+  },
+  {
+    "description": "Create Task Tests",
+    "elements": [
+      {
+        "id": "ScenarioAs a logged in user I should be able to create a task with today as due date",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create a task with today as due date",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create a task with today as due date",
+            "result": {
+              "duration": 2928,
+              "error_message": "1) The specified selector does not match any element in the DOM tree.\n\n    > | Selector('.plus_add_button')\n\n   Browser: Chrome 94.0.4606.81 / macOS 10.15.7\n\n      29 |         this.editProjectOption = Selector('.icon_menu_item__content').withExactText('Edit project')\n      30 |     }\n      31 | \n      32 |     async createTask(taskname,date,numberOfTask = 1) {\n      33 |         await t\n   --------------------------------------------\n    &rarr; 34 |         .click(this.addTaskButton)\n   --------------------------------------------\n      35 |         .wait(500)\n      36 | \n      37 |         if(date==='Today'){\n      38 |             for(let i=0; i< numberOfTask; i++)\n      39 |             {\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:34:10)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:266)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:604)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:769)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:510)\n      at ProjectPage.createTask (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:32:54)\n\n      14 |     });\n      15 |    \n      16 | \n      17 | test.meta('type','smoke')(\"As a logged in user I should be able to create a task with today as due date\", async (t) => {\n      18 |     \n   --------------------------------------------\n    &rarr; 19 |     await projectpage.createTask(TASKS.TODAY_TASK_NAME, TASKS.TODAY_TASK_DATE)\n   --------------------------------------------\n      20 |     await t\n      21 |         .expect(projectpage.taskNameCreatedToday.exists)\n      22 |         .ok()\n      23 | });\n      24 | \n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:19:23)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:240)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:578)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:743)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:484)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:17:1)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create a task with today as due date</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Create Task Tests",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "94.0.4606.81"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15.7"
+      },
+      "reportTime": "2021-10-19T01:40:25.552Z",
+      "startTime": "2021-10-19T01:40:09.680Z"
+    },
+    "name": "Create Task Tests",
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@logged"
+      },
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@create"
+      },
+      {
+        "line": 0,
+        "name": "@task"
+      },
+      {
+        "line": 0,
+        "name": "@today"
+      },
+      {
+        "line": 0,
+        "name": "@due"
+      },
+      {
+        "line": 0,
+        "name": "@date"
+      },
+      {
+        "line": 0,
+        "name": "@tests"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1"
+  },
+  {
+    "description": "Login test",
+    "elements": [
+      {
+        "id": "ScenarioAs a user I should be able to login with valid credentials",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should be able to login with valid credentials",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should be able to login with valid credentials",
+            "result": {
+              "duration": 6454,
+              "error_message": "1) AssertionError: expected false to be truthy\n\n   Browser: Chrome 94.0.4606.81 / macOS 10.15.7\n\n      26 | test.meta('type','smoke')('As a user I should be able to login with valid credentials', async (t) => {\n      27 |     await loginpage.submitLoginForm(CREDENTIALS.STANDARD_USER.USERNAME,CREDENTIALS.STANDARD_USER.PASSWORD)\n      28 |     await t\n      29 |         .wait(2000)\n      30 |         .expect(projectpage.projectName.exists)\n   --------------------------------------------\n    &rarr; 31 |         .ok();\n   --------------------------------------------\n      32 |     \n      33 | });\n      34 | \n      35 | test.meta(\"type\",\"regression\")('As a user I should not be able to login with incorrect email and password', async (t) => {\n      36 |     await loginpage.submitLoginForm(CREDENTIALS.STANDARD_USER.INVALID_USERNAME, CREDENTIALS.STANDARD_USER.INVALID_PASSWORD)\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:31:10)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:232)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:570)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should be able to login with valid credentials</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Login test",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "94.0.4606.81"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15.7"
+      },
+      "reportTime": "2021-10-19T01:40:25.552Z",
+      "startTime": "2021-10-19T01:40:09.680Z"
+    },
+    "name": "Login test",
+    "runInfo": {
+      "endTime": "2021-10-19T01:40:25.552Z",
+      "passed": 0,
+      "startTime": "2021-10-19T01:40:09.680Z",
+      "testCount": 3,
+      "userAgents": [
+        "Chrome 94.0.4606.81 / macOS 10.15.7"
+      ],
+      "warnings": [
+        "The \"filter\" option from the configuration file will be ignored."
+      ]
+    },
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@login"
+      },
+      {
+        "line": 0,
+        "name": "@valid"
+      },
+      {
+        "line": 0,
+        "name": "@credentials"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1"
+  }
+]

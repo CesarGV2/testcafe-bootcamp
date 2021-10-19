@@ -1,0 +1,109 @@
+[
+  {
+    "description": "Create Project Tests",
+    "elements": [
+      {
+        "id": "ScenarioAs a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'",
+            "result": {
+              "duration": 25076,
+              "error_message": "1) - Error in fixture.afterEach hook -\n   The specified selector does not match any element in the DOM tree.\n\n    > | Selector('.ist_button')\n      |   .withExactText('Cancel')\n\n   Browser: Chrome 94.0.4606.81 / macOS 10.15.7\n\n      81 |         .click(this.favoriteProject)\n      82 |     }\n      83 | \n      84 |     async deleteProject(){\n      85 |        await t\n   --------------------------------------------\n    &rarr; 86 |         .click(this.cancelButtonModal)\n   --------------------------------------------\n      87 |         .click(this.favoriteProject)\n      88 |         .click(this.projectOptionsButton)\n      89 |         .click(this.deleteProjectOption)\n      90 |         .click(this.confirmationButtonModal)\n      91 |     }\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:86:10)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:266)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:604)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:769)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:3:510)\n      at ProjectPage.deleteProject (/Users/cesar.guzman/Desktop/Todoist/pom/page/ProjectPage.js:84:26)\n\n       8 |     .beforeEach(async (t) => {\n       9 |         await t.useRole(STANDARD_USER)\n      10 |     })\n      11 |     \n      12 |     .afterEach(async (t) => {\n   --------------------------------------------\n    &rarr; 13 |         await projectpage.deleteProject()\n   --------------------------------------------\n      14 |         await t\n      15 |         .wait(1000)\n      16 |         .expect(projectpage.favoriteProject.exists)\n      17 |         .ok()\n      18 |     })\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:13:27)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:266)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:604)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:769)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:510)\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:7:1)\n2) AssertionError: expected false to be truthy\n\n   Browser: Chrome 94.0.4606.81 / macOS 10.15.7\n\n      23 |             // .setTestSpeed(0.1)\n      24 |             .wait(900)\n      25 |             .expect(projectpage.favoriteProject.exists)\n      26 |             .ok() \n      27 |             .expect(projectpage.favorite.exists)\n   --------------------------------------------\n    &rarr; 28 |             .ok()\n   --------------------------------------------\n      29 |     });\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:28:14)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:266)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:5:604)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create a new project,select a color and add it to 'Favorites'</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Create Project Tests",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "94.0.4606.81"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15.7"
+      },
+      "reportTime": "2021-10-19T00:53:40.139Z",
+      "startTime": "2021-10-19T00:53:15.026Z"
+    },
+    "name": "Create Project Tests",
+    "runInfo": {
+      "endTime": "2021-10-19T00:53:40.139Z",
+      "passed": 0,
+      "startTime": "2021-10-19T00:53:15.026Z",
+      "testCount": 1,
+      "userAgents": [
+        "Chrome 94.0.4606.81 / macOS 10.15.7"
+      ],
+      "warnings": []
+    },
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@logged"
+      },
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@create"
+      },
+      {
+        "line": 0,
+        "name": "@new"
+      },
+      {
+        "line": 0,
+        "name": "@project"
+      },
+      {
+        "line": 0,
+        "name": "@select"
+      },
+      {
+        "line": 0,
+        "name": "@color"
+      },
+      {
+        "line": 0,
+        "name": "@add"
+      },
+      {
+        "line": 0,
+        "name": "@'favorites'"
+      },
+      {
+        "line": 0,
+        "name": "@tests"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateProject.test.js:1"
+  }
+]

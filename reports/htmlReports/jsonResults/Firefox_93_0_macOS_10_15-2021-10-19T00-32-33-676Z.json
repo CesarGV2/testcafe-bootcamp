@@ -1,0 +1,187 @@
+[
+  {
+    "description": "Login test",
+    "elements": [
+      {
+        "id": "ScenarioAs a user I should not be able to login with incorrect email",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should not be able to login with incorrect email",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should not be able to login with incorrect email",
+            "result": {
+              "duration": 2804,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should not be able to login with incorrect email</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a user I should not be able to login with incorrect password",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should not be able to login with incorrect password",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should not be able to login with incorrect password",
+            "result": {
+              "duration": 3037,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should not be able to login with incorrect password</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a user I should be able to login with valid credentials",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should be able to login with valid credentials",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should be able to login with valid credentials",
+            "result": {
+              "duration": 10025,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should be able to login with valid credentials</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a user I should not be able to login with incorrect email and password",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should not be able to login with incorrect email and password",
+        "skipped": true,
+        "sourceLine": "undefined",
+        "status": "skipped",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should not be able to login with incorrect email and password",
+            "result": {
+              "duration": 1769,
+              "status": "skipped"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should not be able to login with incorrect email and password</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Login test",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "firefox",
+        "version": "93.0"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15"
+      },
+      "reportTime": "2021-10-19T00:32:33.678Z",
+      "startTime": "2021-10-19T00:32:18.619Z"
+    },
+    "name": "Login test",
+    "runInfo": {
+      "endTime": "2021-10-19T00:32:33.676Z",
+      "passed": 3,
+      "startTime": "2021-10-19T00:32:18.619Z",
+      "testCount": 3,
+      "userAgents": [
+        "Chrome 94.0.4606.81 / macOS 10.15.7",
+        "Firefox 93.0 / macOS 10.15"
+      ],
+      "warnings": []
+    },
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@login"
+      },
+      {
+        "line": 0,
+        "name": "@incorrect"
+      },
+      {
+        "line": 0,
+        "name": "@email"
+      },
+      {
+        "line": 0,
+        "name": "@password"
+      },
+      {
+        "line": 0,
+        "name": "@valid"
+      },
+      {
+        "line": 0,
+        "name": "@credentials"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1"
+  }
+]

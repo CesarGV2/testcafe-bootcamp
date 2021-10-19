@@ -1,0 +1,4466 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <!-- Meta, title, CSS, favicons, etc. -->
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    	<title>Multiple Cucumber HTML Reporter</title>
+
+        
+                <!-- Bootstrap -->
+                <link rel="stylesheet" href="assets/css/bootstrap.min.css" >
+                
+                <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+                <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+                
+                <!--[if lt IE 9]>
+                <script src="assets/js/html5shiv.min.js"></script>
+                <script src="assets/js/respond.min.js"></script>
+                <![endif]-->
+
+                <link href="assets/css/font-awesome.min.css" rel="stylesheet">
+
+                <!-- DataTables -->
+                <link href="assets/css/dataTables.bootstrap.min.css" rel="stylesheet">
+                <link href="assets/css/responsive.dataTables.min.css" rel="stylesheet">
+        
+
+        <!-- Custom Theme Style -->
+        <style type="text/css">
+            body {
+    color: #73879C;
+    background: #F7F7F7;
+    font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.471;
+}
+
+.main_conainer {
+    padding: 10px 20px 0;
+}
+
+i span {
+    display: none;
+}
+
+/* Navigation */
+nav.navbar {
+    background: #EDEDED;
+    border-bottom: 1px solid #D9DEE4;
+    margin-bottom: 10px;
+}
+
+nav .navbar-brand {
+    border-right: 1px solid #D9DEE4;
+    color: #5A738E;
+}
+
+nav .navbar-text {
+    font-size: 18px;
+    height: 50px;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 15px 0;
+}
+
+/* Table */
+table {
+    width: 100%;
+}
+
+table.chart tr th:first-of-type {
+    width: 33.333%;
+}
+
+.table > thead > tr > th {
+    background: #F5F7FA;
+}
+
+table.tile h3, table.tile h4, table.tile span {
+    font-weight: bold;
+    vertical-align: middle !important;
+}
+
+table.tile th, table.tile td {
+    text-align: center;
+}
+
+table.tile th {
+    border-bottom: 1px solid #E6ECEE;
+}
+
+table.tile td {
+    padding: 5px 0;
+}
+
+table.tile td ul {
+    text-align: left;
+    padding-left: 0;
+}
+
+table.tile td ul li {
+    list-style: none;
+    width: 100%;
+}
+
+table.tile td ul li a {
+    width: 100%;
+}
+
+table.tile td ul li a big {
+    right: 0;
+    float: right;
+    margin-right: 13px;
+}
+
+table.tile_info {
+    width: 100%;
+}
+
+table.tile_info td {
+    text-align: left;
+    padding: 1px;
+    font-size: 15px;
+}
+
+table.tile_info td p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+    line-height: 28px;
+}
+
+table.tile_info td i {
+    display: inline-block;
+    margin-right: 8px;
+    font-size: 17px;
+    float: left;
+    width: 18px;
+    line-height: 28px;
+    text-align: center;
+}
+
+table.tile_info td:first-child {
+    width: 65%;
+}
+
+td span {
+    line-height: 28px;
+}
+
+table.tile_info td.percentage {
+    text-align: right;
+
+}
+
+/* chart in table */
+table td.chart {
+    display: inline-block;
+    position: relative;
+}
+
+table td.chart #feature-chart,
+table td.chart #scenario-chart,
+table td.chart .total {
+    height: 140px;
+    margin: 15px 10px 10px 0;
+    width: 140px;
+}
+
+table td.chart .total {
+    display: inline-block;
+    position: absolute;
+    font-size: 2em;
+    height: 50px;
+    line-height: 50px;
+    top: 45px;
+    left: 45px;
+    text-align: center;
+    vertical-align: middle;
+    width: 50px;
+}
+
+/* colors */
+.ambiguous-color {
+    color: #E74C3C !important;
+}
+
+.failed-color {
+    color: #E74C3C !important;
+}
+
+.not-defined-color {
+    color: #F39C12 !important;
+}
+
+.passed-color {
+    color: #1ABB9C !important;
+}
+
+.pending-color {
+    color: #FFD119 !important;
+}
+
+.skipped-color {
+    color: #3498DB !important;
+}
+
+/* backgrounds */
+.ambiguous-background {
+    background: #b73122 !important;
+}
+
+.failed-background {
+    background: #E74C3C !important;
+}
+
+.not-defined-background {
+    background: #F39C12 !important;
+}
+
+.passed-background {
+    background: #1ABB9C !important;
+}
+
+.pending-background {
+    background: #FFD119 !important;
+}
+
+.skipped-background {
+    background: #3498DB !important;
+}
+
+/* general */
+.x_panel {
+    position: relative;
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 10px 17px;
+    display: inline-block;
+    background: #fff;
+    border: 1px solid #E6E9ED;
+    -webkit-column-break-inside: avoid;
+    -moz-column-break-inside: avoid;
+    column-break-inside: avoid;
+    opacity: 1;
+    transition: all .2s ease;
+}
+
+.x_title {
+    border-bottom: 2px solid #E6E9ED;
+    padding: 1px 5px 6px;
+    margin-bottom: 10px;
+}
+
+.x_title .filter {
+    width: 40%;
+    float: right;
+}
+
+.x_title h2 {
+    margin: 5px 0 6px;
+    float: left;
+    font-size: 24px;
+    font-weight: 400;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.fixed_height_320 {
+    height: 320px;
+}
+
+.x_title h2 small {
+    margin-left: 10px;
+}
+
+.x_title span {
+    color: #BDBDBD;
+}
+
+.x_content {
+    padding: 0 5px 6px;
+    position: relative;
+    width: 100%;
+    float: left;
+    clear: both;
+    margin-top: 5px;
+}
+
+.x_content h4 {
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.panel_toolbox {
+    float: right;
+    margin: 5px 0 0;
+    min-width: 70px;
+}
+
+.panel_toolbox > li {
+    float: right;
+}
+
+.panel_toolbox > li > a {
+    cursor: pointer;
+}
+
+.panel_toolbox > li > a {
+    padding: 5px;
+    color: #C5C7CB;
+    font-size: 14px;
+}
+
+.panel_toolbox > li > a:hover {
+    background: #F5F7FA;
+}
+
+.page-title {
+    width: 100%;
+    padding: 10px 0 30px 0;
+}
+
+.page-title {
+    display: block;
+}
+
+.page-title h1 {
+    margin: 9px 0;
+}
+
+.page-title .title_right {
+    width: 55%;
+    float: left;
+    display: block;
+}
+
+.page-title .title_right .pull-right {
+    margin: 10px 0;
+}
+
+.page-title p {
+    margin-left: 15px;
+}
+
+.dashboard-widget-content {
+    padding-top: 9px;
+}
+
+.dashboard-widget-content .sidebar-widget {
+    width: 50%;
+    display: inline-block;
+    vertical-align: top;
+    background: #fff;
+    border: 1px solid #abd9ea;
+    border-radius: 5px;
+    text-align: center;
+    float: right;
+    padding: 2px;
+    margin-top: 10px;
+}
+
+ul.quick-list {
+    padding-left: 0;
+    display: inline-block;
+}
+
+ul.quick-list li,
+table.quick-list tr {
+    padding-left: 10px;
+    list-style: none;
+    margin: 0;
+    padding-bottom: 6px;
+    padding-top: 4px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+ul.quick-list li .meta-data-title,
+table.quick-list td.meta-data-title {
+    display: inline-block;
+    min-width: 75px;
+    font-weight: bold;
+}
+
+ul.quick-list li span,
+table.quick-list td {
+    line-height: 28px;
+}
+
+ul.quick-list li,
+table.quick-list tr {
+    border-bottom: 1px solid #efefef;
+    padding: 0.5em 0;
+}
+
+ul.quick-list li:last-child,
+table.quick-list tr:last-child {
+    border-bottom: none;
+}
+
+ul.quick-list li i {
+    padding-right: 10px;
+    color: #757679;
+}
+
+.screenshot{
+    max-height: 100%;
+    max-width: 100%;
+}
+
+/* Features / Scenarios */
+ul.panel_toolbox li .step {
+    border-radius: 50%;
+    color: #ffffff;
+    display: block;
+    font-size: 14px;
+    height: 30px;
+    margin-right: 5px;
+    padding: 5px;
+    text-align: center;
+    width: 30px;
+}
+
+.scenario-step-container {
+    margin-bottom: 10px;
+}
+
+.scenario-step-container .label {
+    display: inline-block;
+    text-align: center;
+    width: 30px;
+}
+
+.scenario-step-container .text {
+    display: inline;
+}
+
+.scenario-step-container .duration {
+    position: relative;
+    float: right;
+}
+
+.scenario-step-container .text .keyword.highlight {
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.scenario-scroll-bar {
+    overflow-x: scroll;
+}
+
+.scenario-step-collapse,
+.scenario-scroll-bar .arguments {
+    margin-left: 30px;
+    width: auto;
+}
+
+/* media */
+@media (max-width: 1200px) {
+    .x_title h2 {
+        width: 70%;
+    }
+}
+
+@media (max-width: 640px) {
+    .x_title h2 {
+        width: 100%;
+    }
+}
+
+/* override */
+table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before {
+    background-color: #1ABB9C;
+}
+
+table.dataTable.dtr-inline.collapsed > tbody > tr.parent > td:first-child:before, table.dataTable.dtr-inline.collapsed > tbody > tr.parent > th:first-child:before {
+    background-color: #E74C3C;
+}
+
+.created-by {
+    padding: 50px 0;
+    text-align: center;
+}
+
+            
+        </style>
+    </head>
+    <body>
+
+        <nav class="navbar">
+            <div class="container-fluid">
+                <p class="navbar-text">TestCafé Report</p>
+            </div>
+        </nav>
+
+        <div class="main_conainer">
+
+            <div class="row">
+                <div class="col-md-6 col-lg-4 col-xs-12">
+                    <div class="x_panel fixed_height_320">
+                        <div class="x_title">
+    <h2>Features</h2>
+    <ul class="nav navbar-right panel_toolbox">
+        <li>
+            <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<div class="x_content">
+    <table class="chart">
+        <tr>
+            <th>
+                <p>Chart</p>
+            </th>
+            <th>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                    <p class="">Status</p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    <p class="">Progress</p>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <td class="chart">
+                <canvas id="feature-chart"></canvas>
+                <div class="total">42</div>
+            </td>
+            <td>
+                <table class="tile_info">
+                    <tr>
+                        <td>
+                            <p data-toggle="tooltip" data-placement="left" title="Features passed">
+                                <i class="fa fa-check-circle passed-color"></i>
+                                Passed
+                            </p>
+                        </td>
+                        <td class="percentage">69.05 %</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p data-toggle="tooltip" data-placement="left" title="Features failed">
+                                <i class="fa fa-exclamation-circle failed-color"></i>
+                                Failed
+                            </p>
+                        </td>
+                        <td class="percentage">30.95 %</td>
+                    </tr>
+                    
+                    
+                    
+                    
+
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>
+
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-4 col-xs-12">
+                    <div class="x_panel fixed_height_320">
+                        <div class="x_title">
+    <h2>Scenarios</h2>
+    <ul class="nav navbar-right panel_toolbox">
+        <li>
+            <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<div class="x_content">
+    <table class="chart">
+        <tr>
+            <th>
+                <p>Chart</p>
+            </th>
+            <th>
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                    <p class="">Status</p>
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                    <p class="">Progress</p>
+                </div>
+            </th>
+        </tr>
+        <tr>
+            <td class="chart">
+                <canvas id="scenario-chart"></canvas>
+                <div class="total">102</div>
+            </td>
+            <td>
+                <table class="tile_info">
+                    <tr>
+                        <td>
+                            <p data-toggle="tooltip" data-placement="left" title="Scenario passed">
+                                <i class="fa fa-check-circle passed-color"></i>
+                                Passed
+                            </p>
+                        </td>
+                        <td class="percentage">72.55 %</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p data-toggle="tooltip" data-placement="left" title="Scenario failed">
+                                <i class="fa fa-exclamation-circle failed-color"></i>
+                                Failed
+                            </p>
+                        </td>
+                        <td class="percentage">18.63 %</td>
+                    
+                    
+                    </tr>
+                    
+                    
+                    <tr>
+                        <td>
+                            <p data-toggle="tooltip" data-placement="left" title="Scenario is skipped">
+                                <i class="fa fa-arrow-circle-right skipped-color"></i>
+                                Skipped
+                            </p>
+                        </td>
+                        <td class="percentage">8.82 %</td>
+                    </tr>
+                    
+                </table>
+            </td>
+        </tr>
+        
+    </table>
+</div>
+
+                    </div>
+                </div>
+
+                
+                <div class="col-lg-4 col-xs-12">
+                    <div class="x_panel fixed_height_320">
+                        
+<div class="x_title">
+    <h2>Run info</h2>
+    <ul class="nav navbar-right panel_toolbox">
+        <li>
+            <a class="collapse-link">
+                <i class="fa fa-chevron-up"></i>
+            </a>
+        </li>
+    </ul>
+    <div class="clearfix"></div>
+</div>
+<div class="x_content">
+    <div class="dashboard-widget-content">
+        <table class="quick-list">
+            
+                
+                <tr>
+                    <td class="meta-data-title">Project</td>
+                    <td class="meta-data-data">Todoist</td>
+                </tr>
+                
+                <tr>
+                    <td class="meta-data-title">Release</td>
+                    <td class="meta-data-data">1.0.0</td>
+                </tr>
+                
+                <tr>
+                    <td class="meta-data-title">Report Generation Time</td>
+                    <td class="meta-data-data">2021-10-19T01:51:47.338Z</td>
+                </tr>
+                
+            
+        </table>
+    </div>
+</div>
+
+
+                    </div>
+                </div>
+                
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Features overview</h2>
+            <ul class="nav navbar-right panel_toolbox">
+                <li>
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </li>
+            </ul>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="x_content">
+            <div class="table-responsive">
+                <table id="features-table" class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+                       width="100%">
+                    <thead>
+                    <tr>
+                        <th>Feature name</th>
+                        <th><i class="fa fa-tags fa-lg" title="Tags"></i></th>
+                        <th>Status</th>
+                        
+                            <th class="text-center">
+                                <i class="fa fa-desktop fa-lg"></i>
+                                <i class="fa fa-mobile fa-lg"></i>
+                            </th>
+                            <th>Device</th>
+                            <th>OS</th>
+                            
+                            
+                            <th>Browser</th>
+                            
+                        
+                        
+                        <th>Date</th>
+                        
+                        
+                        <th>Duration</th>
+                        
+                        <th>Total</th>
+                        <th>Passed</th>
+                        <th>Failed</th>
+                        
+                        
+                        <th>Skip</th>
+                        
+                        
+                        
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/66402027-c3fb-442d-9200-75454a099567-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 15:31:43</td>
+                        
+                        
+                        <td>00:00:11.624</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/eb4e92b5-9048-4418-9fac-dabc95334953-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 15:31:43</td>
+                        
+                        
+                        <td>00:00:18.917</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">2</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right ">1</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/22872ec5-ba88-4d34-9f57-58a91602bf90-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 15:31:43</td>
+                        
+                        
+                        <td>00:00:08.858</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">2</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right ">1</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/dceceb10-30ab-445c-bf73-9fd44f881a5c-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 15:58:43</td>
+                        
+                        
+                        <td>00:00:11.253</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/1cc5daed-e60b-44e9-aeb6-f83dc125666d-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 15:58:43</td>
+                        
+                        
+                        <td>00:00:43.714</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/4ea34bee-4ae3-498c-90fe-a8e843cb41ae-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 15:58:43</td>
+                        
+                        
+                        <td>00:00:08.130</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">2</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right ">1</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/6b5681d5-4f06-4cb0-a5cc-b055b1355481-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 18:07:34</td>
+                        
+                        
+                        <td>00:00:12.266</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/4296948a-ade5-405e-874f-6cb31e42c5f2-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 18:07:34</td>
+                        
+                        
+                        <td>00:00:44.151</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/1539d0b1-6f7c-4d59-a3b9-0ab694ac6452-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 18:07:34</td>
+                        
+                        
+                        <td>00:00:07.761</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right ">1</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/efef74e8-19ea-44d2-831c-7767965c903c-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:02:17</td>
+                        
+                        
+                        <td>00:00:47.478</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/279f5e29-c261-4d52-9476-ae6efc16c479-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:05:29</td>
+                        
+                        
+                        <td>00:00:12.992</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right ">1</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/a3157b6f-005c-4f79-aac6-fcbdd03a454e-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:08:25</td>
+                        
+                        
+                        <td>00:00:13.297</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/9987c716-5f77-44d0-91e6-a6e9388e86c1-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:17:12</td>
+                        
+                        
+                        <td>00:00:13.694</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/5c2911bb-3e81-4c74-9a1f-dfb16d63a687-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @task @today @due @date @tests">
+                                <span>@logged @user @create @task @today @due @date @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:17:12</td>
+                        
+                        
+                        <td>00:00:08.880</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/91393034-37cd-4e48-b70b-0a16d7b2d575-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @valid @credentials">
+                                <span>@user @login @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:17:12</td>
+                        
+                        
+                        <td>00:00:06.670</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/3a3a9886-05bf-448e-b6eb-5ad986df809a-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:18:47</td>
+                        
+                        
+                        <td>00:00:12.429</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right ">1</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/dad88d71-fc77-4470-8933-c269340640fe-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:27:47</td>
+                        
+                        
+                        <td>00:00:47.897</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/b95993a5-9344-413b-819c-32f8ce1bcfd9-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:31:33</td>
+                        
+                        
+                        <td>00:00:14.745</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/37dbc999-a11f-4a8d-8a13-8852dc4e3c25-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:32:33</td>
+                        
+                        
+                        <td>00:00:17.635</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right ">1</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/83229b95-ab5d-4fdc-8b49-d22b950b2f8d-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:53:40</td>
+                        
+                        
+                        <td>00:00:25.076</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/3cd71ecf-ca0d-4ae9-8de8-f55757073ef5-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:26:21</td>
+                        
+                        
+                        <td>00:00:44.555</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">2</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/504627dc-d1d1-461c-82f3-c828f64eba17-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:28:51</td>
+                        
+                        
+                        <td>00:00:54.342</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">2</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/717fad4d-3922-467a-befd-0c46bffcedf8-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:31:59</td>
+                        
+                        
+                        <td>00:00:57.921</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/2a5a71e6-2b17-4d30-8ce3-2877cd649a28-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:33:04</td>
+                        
+                        
+                        <td>00:00:25.620</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        <td class="text-right ">3</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/8cac34c4-b24a-46f8-be2c-a106d54621ff-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @tasks @today @due @date @task @tomorrow @tests">
+                                <span>@logged @user @create @tasks @today @due @date @task @tomorrow @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:35:11</td>
+                        
+                        
+                        <td>00:00:47.137</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/3d55db4b-ef96-4e1f-bf98-731170122e06-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:38:14</td>
+                        
+                        
+                        <td>00:00:12.313</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right ">1</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/6fe2576a-3bbf-400e-9bb1-5312617a6e19-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:39:27</td>
+                        
+                        
+                        <td>00:00:14.291</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">4</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/ec23b4fd-4dec-479c-aab3-1d5d76a896a6-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:40:25</td>
+                        
+                        
+                        <td>00:00:06.427</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/10e09c54-66e1-4a07-92d3-9462ae92a74c-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @task @today @due @date @tests">
+                                <span>@logged @user @create @task @today @due @date @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:40:25</td>
+                        
+                        
+                        <td>00:00:02.928</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/1ad3032c-2476-4be9-86f6-daf78deafa31-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @valid @credentials">
+                                <span>@user @login @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:40:25</td>
+                        
+                        
+                        <td>00:00:06.454</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/bfe8b5ee-3255-4c57-a879-7bc43066e4f8-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:43:14</td>
+                        
+                        
+                        <td>00:00:12.879</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/4f878832-99e6-49ed-9c34-6812b1311123-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @task @today @due @date @tests">
+                                <span>@logged @user @create @task @today @due @date @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:43:14</td>
+                        
+                        
+                        <td>00:00:06.626</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/b5e9175d-87a2-4c05-8169-1cb8e269bcc7-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @valid @credentials">
+                                <span>@user @login @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:43:14</td>
+                        
+                        
+                        <td>00:00:05.962</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/92727096-bd9f-46fb-989a-acd6542ad1c3-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:44:23</td>
+                        
+                        
+                        <td>00:00:14.049</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">4</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/ca70e3a7-8767-40c9-9bb3-6502407f63d8-Create-Project-Tests.html">Create Project Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @new @project @select @color @add @'favorites' @tests">
+                                <span>@logged @user @create @new @project @select @color @add @'favorites' @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:45:37</td>
+                        
+                        
+                        <td>00:00:12.352</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/fee430aa-47a2-401a-a189-ed53f7311dfb-Create-Task-Tests.html">Create Task Tests</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@logged @user @create @task @today @due @date @tests">
+                                <span>@logged @user @create @task @today @due @date @tests</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:45:37</td>
+                        
+                        
+                        <td>00:00:07.511</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/2da75482-2105-4bb7-a7c4-637804971aa8-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @valid @credentials">
+                                <span>@user @login @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:45:37</td>
+                        
+                        
+                        <td>00:00:05.936</td>
+                        
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/9b77336c-3aae-4697-9bfd-9f4dfd74c95e-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:47:15</td>
+                        
+                        
+                        <td>00:00:20.096</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">3</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/a4c37219-ce02-467d-8b28-70ab80a645c3-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @password @valid @credentials @email">
+                                <span>@user @login @incorrect @password @valid @credentials @email</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15.7
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-chrome fa-lg"><span>chrome</span></i>
+                                94.0.4606.81
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:51:42</td>
+                        
+                        
+                        <td>00:00:17.363</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">2</td>
+                        <td class="text-right ">1</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/6269ae17-e3ff-4a9d-a8df-b7fe76a7c92d-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-firefox fa-lg"><span>firefox</span></i>
+                                93.0
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 19:32:33</td>
+                        
+                        
+                        <td>00:00:17.635</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right ">1</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/6c9697d0-03e2-422e-a284-58de6c36ebe7-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @email @password @valid @credentials">
+                                <span>@user @login @incorrect @email @password @valid @credentials</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-exclamation-circle failed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Failed">
+                                <span>exclamation-circle failed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-firefox fa-lg"><span>firefox</span></i>
+                                93.0
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:47:15</td>
+                        
+                        
+                        <td>00:00:20.096</td>
+                        
+                        <td class="text-right ">4</td>
+                        <td class="text-right ">1</td>
+                        <td class="text-right ">3</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    <tr>
+                        <td>
+                            <a href="features/00e1f7f3-ac2a-4cba-a169-f70c108bec43-Login-test.html">Login test</a>
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            <i class="fa fa-tags fa-lg" data-toggle="tooltip" data-placement="top"
+                               title="@user @login @incorrect @password @valid @credentials @email">
+                                <span>@user @login @incorrect @password @valid @credentials @email</span>
+                            </i>
+                            
+                            
+                        </td>
+                        <td class="text-center">
+                            
+                            
+                            
+                            
+                            
+                            
+                            <i class="fa fa-check-circle passed-color fa-lg" data-toggle="tooltip" data-placement="top" title="Passed">
+                                <span>check-circle passed-color</span>
+                            </i>
+                        </td>
+                        
+                            <td class="text-center">
+                                
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-desktop fa-lg" data-toggle="tooltip" data-placement="top" title="Desktop">
+                                    <span>desktop</span>
+                                </i>
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                macOS
+                            </td>
+                            <td>
+                                
+                                
+                                
+                                
+                                <i class="fa fa-apple fa-lg"><span>apple</span></i>
+                                10.15
+                            </td>
+                            
+                            
+                            <td>
+                                
+                                
+                                
+                                
+                                
+                                <i class="fa fa-firefox fa-lg"><span>firefox</span></i>
+                                93.0
+                                
+                            </td>
+                            
+                        
+                        
+                        <td>2021/10/18 20:51:42</td>
+                        
+                        
+                        <td>00:00:17.363</td>
+                        
+                        <td class="text-right ">3</td>
+                        <td class="text-right ">3</td>
+                        <td class="text-right none">0</td>
+                        
+                        <td class="text-right none">0</td>
+                        
+                        
+                        
+                        
+                    </tr>
+                    
+                    </tbody>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+         
+            <div class="created-by">
+                <p>Created by wswebcreation. Find me on:</p>
+                <a href="http://www.wswebcreation.nl/" target="_blank"><i class="fa fa-rss-square fa-2x"></i></a>
+                <a href="https://github.com/wswebcreation/" target="_blank"><i class="fa fa-github-square fa-2x"></i></a>
+                <a href="http://nl.linkedin.com/in/wimselles" target="_blank"><i class="fa fa-linkedin-square fa-2x"></i></a>
+                <a href="http://stackoverflow.com/users/5911978/wswebcreation" target="_blank"><i class="fa fa-stack-overflow fa-2x"></i></a>
+            </div>
+         
+
+        
+            <script src="assets/js/jquery-3.2.1.min.js"></script>
+            <script src="assets/js/bootstrap.min.js"></script>
+            <script src="assets/js/Chart.min.js"></script>
+
+            <!-- DataTables -->
+            <script src="assets/js/jquery.dataTables.min.js"></script>
+            <script src="assets/js/dataTables.bootstrap.min.js"></script>
+            <script src="assets/js/dataTables.responsive.min.js"></script>
+        
+
+        <!-- Custom -->
+        <script>
+            $(document).ready(function () {
+                $('#features-table').dataTable({
+                    "order": [[0, "asc"]],
+                    "lengthMenu": [[50, 100, 150, -1], [50, 100, 150, "All"]],
+                    "stateSave": true
+                });
+
+                var featureOptions = {
+                    legend: false,
+                    responsive: false
+                };
+
+                new Chart(document.getElementById("feature-chart"), {
+                    type: 'doughnut',
+                    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+                    data: {
+                        labels: [
+                            "Passed",
+                            "Failed",
+                            "Ambiguous",
+                            "Not Defined",
+                            "Pending",
+                            "Skipped"
+                        ],
+                        datasets: [{
+                            data: [
+                                29,
+                                13,
+                                0,
+                                0,
+                                0,
+                                0
+                            ],
+                            backgroundColor: [
+                                "#26B99A",
+                                "#E74C3C",
+                                "#b73122",
+                                "#F39C12",
+                                "#FFD119",
+                                "#3498DB"
+                            ]
+                        }]
+                    },
+                    options: featureOptions
+                });
+
+                var scenarioOptions = {
+                    legend: false,
+                    responsive: false
+                };
+
+                new Chart(document.getElementById("scenario-chart"), {
+                    type: 'doughnut',
+                    tooltipFillColor: "rgba(51, 51, 51, 0.55)",
+                    data: {
+                        labels: [
+                            "Passed",
+                            "Failed",
+                            "Ambiguous",
+                            "Not Defined",
+                            "Pending",
+                            "Skipped"
+                        ],
+                        datasets: [{
+                            data: [
+                                74,
+                                19,
+                                0,
+                                0,
+                                0,
+                                9
+                            ],
+                            backgroundColor: [
+                                "#26B99A",
+                                "#E74C3C",
+                                "#b73122",
+                                "#F39C12",
+                                "#FFD119",
+                                "#3498DB"
+                            ]
+                        }]
+                    },
+                    options: scenarioOptions
+                });
+
+                $('.x_title').on('click', function () {
+    var $BOX_PANEL = $(this).closest('.x_panel'),
+        $ICON = $(this).find('.collapse-link i'),
+        $BOX_CONTENT = $BOX_PANEL.find('.x_content');
+
+    // fix for some div with hardcoded fix class
+    if ($BOX_PANEL.attr('style')) {
+        $BOX_CONTENT.slideToggle(200, function () {
+            $BOX_PANEL.removeAttr('style');
+        });
+    } else {
+        $BOX_CONTENT.slideToggle(200);
+        $BOX_PANEL.css('height', 'auto');
+    }
+
+    $ICON.toggleClass('fa-chevron-up fa-chevron-down');
+});
+
+$('body').tooltip({
+    selector: '[data-toggle="tooltip"]'
+});
+            });
+        </script>
+    </body>
+</html>

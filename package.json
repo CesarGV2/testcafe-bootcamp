@@ -1,0 +1,28 @@
+{
+  "name": "todoist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "testcafe chrome ./pom/test",
+    "test-smoke": "testcafe chrome ./pom/test --test-meta type=smoke  --reporter cucumber-json --reporter-json-folder='./reports/htmlReports/jsonResults'",
+    "test-login": "testcafe chrome ./pom/test --fixture-meta test=login --reporter cucumber-json --reporter-json-folder='./reports/htmlReports/jsonResults'",
+    "test-loginHeadless": "testcafe chrome:headless,firefox:headless ./pom/test --fixture-meta test=login --reporter cucumber-json --reporter-json-folder='./reports/htmlReports/jsonResults'",
+    "test-createProject": "testcafe chrome ./pom/test/ --fixture-meta test=createProject ",
+    "test-createTask": "testcafe chrome ./pom/test --fixture-meta test=createTask --reporter cucumber-json --reporter-json-folder='./reports/htmlReports/jsonResults'",
+    "test-reporter": "testcafe chrome ./pom/test --reporter cucumber-json --reporter-json-folder='./reports/htmlReports/jsonResults'",
+    "create-report": "node report-generator.js"
+  },
+  "author": "Cesar Guzman",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "10.0.0",
+    "testcafe": "1.16.1",
+    "testcafe-reporter-cucumber-json": "6.3.0"
+  },
+  "devDependencies": {
+    "eslint": "8.0.1",
+    "eslint-plugin-testcafe": "^0.2.1",
+    "multiple-cucumber-html-reporter": "1.18.0"
+  }
+}

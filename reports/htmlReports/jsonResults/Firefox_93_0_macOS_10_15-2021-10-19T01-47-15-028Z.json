@@ -1,0 +1,192 @@
+[
+  {
+    "description": "Login test",
+    "elements": [
+      {
+        "id": "ScenarioAs a user I should not be able to login with incorrect email",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should not be able to login with incorrect email",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "passed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should not be able to login with incorrect email",
+            "result": {
+              "duration": 2830,
+              "status": "passed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should not be able to login with incorrect email</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a user I should not be able to login with incorrect password",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should not be able to login with incorrect password",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should not be able to login with incorrect password",
+            "result": {
+              "duration": 5010,
+              "error_message": "1) AssertionError: expected 'Too many login attempts. Try again later.' to deeply equal 'Wrong email or password.'\n\n   + expected - actual\n\n   -Too many login attempts. Try again later.\n   +Wrong email or password.\n\n\n   Browser: Firefox 93.0 / macOS 10.15\n\n      17 | });\n      18 | \n      19 | test.meta(\"type\",\"regression\")('As a user I should not be able to login with incorrect password', async (t) => {\n      20 |     await loginpage.submitLoginForm(CREDENTIALS.STANDARD_USER.USERNAME, CREDENTIALS.STANDARD_USER.INVALID_PASSWORD)\n      21 |     await t\n   --------------------------------------------\n    &rarr; 22 |     .expect(loginpage.errorMessage.innerText).eql('Wrong email or password.')\n   --------------------------------------------\n      23 |     \n      24 | });\n      25 | \n      26 | test.meta('type','smoke')('As a user I should be able to login with valid credentials', async (t) => {\n      27 |     await loginpage.submitLoginForm(CREDENTIALS.STANDARD_USER.USERNAME,CREDENTIALS.STANDARD_USER.PASSWORD)\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:22:47)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:232)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:570)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should not be able to login with incorrect password</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a user I should be able to login with valid credentials",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should be able to login with valid credentials",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should be able to login with valid credentials",
+            "result": {
+              "duration": 7273,
+              "error_message": "1) AssertionError: expected false to be truthy\n\n   Browser: Firefox 93.0 / macOS 10.15\n\n      26 | test.meta('type','smoke')('As a user I should be able to login with valid credentials', async (t) => {\n      27 |     await loginpage.submitLoginForm(CREDENTIALS.STANDARD_USER.USERNAME,CREDENTIALS.STANDARD_USER.PASSWORD)\n      28 |     await t\n      29 |         .wait(2000)\n      30 |         .expect(projectpage.projectName.exists)\n   --------------------------------------------\n    &rarr; 31 |         .ok();\n   --------------------------------------------\n      32 |     \n      33 | });\n      34 | \n      35 | test.meta(\"type\",\"regression\")('As a user I should not be able to login with incorrect email and password', async (t) => {\n      36 |     await loginpage.submitLoginForm(CREDENTIALS.STANDARD_USER.INVALID_USERNAME, CREDENTIALS.STANDARD_USER.INVALID_PASSWORD)\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:31:10)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:232)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:570)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should be able to login with valid credentials</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a user I should not be able to login with incorrect email and password",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a user I should not be able to login with incorrect email and password",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1:0"
+            },
+            "name": "As a user I should not be able to login with incorrect email and password",
+            "result": {
+              "duration": 4983,
+              "error_message": "1) AssertionError: expected 'Too many login attempts. Try again later.' to deeply equal 'Wrong email or password.'\n\n   + expected - actual\n\n   -Too many login attempts. Try again later.\n   +Wrong email or password.\n\n\n   Browser: Firefox 93.0 / macOS 10.15\n\n      33 | });\n      34 | \n      35 | test.meta(\"type\",\"regression\")('As a user I should not be able to login with incorrect email and password', async (t) => {\n      36 |     await loginpage.submitLoginForm(CREDENTIALS.STANDARD_USER.INVALID_USERNAME, CREDENTIALS.STANDARD_USER.INVALID_PASSWORD)\n      37 |     await t\n   --------------------------------------------\n    &rarr; 38 |      .expect(loginpage.errorMessage.innerText).eql('Wrong email or password.')\n   --------------------------------------------\n      39 |      \n      40 |  \n      41 |  });\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:38:48)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:232)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:4:570)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a user I should not be able to login with incorrect email and password</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Login test",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "firefox",
+        "version": "93.0"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15"
+      },
+      "reportTime": "2021-10-19T01:47:15.030Z",
+      "startTime": "2021-10-19T01:46:55.937Z"
+    },
+    "name": "Login test",
+    "runInfo": {
+      "endTime": "2021-10-19T01:47:15.028Z",
+      "passed": 1,
+      "startTime": "2021-10-19T01:46:55.937Z",
+      "testCount": 4,
+      "userAgents": [
+        "Chrome 94.0.4606.81 / macOS 10.15.7",
+        "Firefox 93.0 / macOS 10.15"
+      ],
+      "warnings": [
+        "The \"filter\" option from the configuration file will be ignored."
+      ]
+    },
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@login"
+      },
+      {
+        "line": 0,
+        "name": "@incorrect"
+      },
+      {
+        "line": 0,
+        "name": "@email"
+      },
+      {
+        "line": 0,
+        "name": "@password"
+      },
+      {
+        "line": 0,
+        "name": "@valid"
+      },
+      {
+        "line": 0,
+        "name": "@credentials"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/Login.test.js:1"
+  }
+]
