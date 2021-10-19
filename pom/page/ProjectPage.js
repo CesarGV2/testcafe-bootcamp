@@ -32,8 +32,7 @@ class ProjectPage {
     async createTask(taskname,date,numberOfTask = 1) {
         await t
         .click(this.addTaskButton)
-        .wait(500)
-
+        // .wait(500)
         if(date==='Today'){
             for(let i=0; i< numberOfTask; i++)
             {
@@ -91,7 +90,7 @@ class ProjectPage {
         .click(this.projectOptionsButton)
         .click(this.deleteProjectOption)
         .click(this.confirmationButtonModal)
-        .wait(900)
+        // .wait(900)
     }
         
 

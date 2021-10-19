@@ -12,6 +12,7 @@ fixture.meta('test','createProject')('Create Project Tests')
     .afterEach(async (t) => {
         await projectpage.deleteProject()
         await t
+        .wait(2000)
         .expect(projectpage.favoriteProject.exists)
         .notOk()
     })

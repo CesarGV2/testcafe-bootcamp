@@ -1,0 +1,173 @@
+[
+  {
+    "description": "Create Task Tests",
+    "elements": [
+      {
+        "id": "ScenarioAs a logged in user I should be able to create a task with today as due date",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create a task with today as due date",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create a task with today as due date",
+            "result": {
+              "duration": 30929,
+              "error_message": "1) AssertionError: expected false to be truthy\n\n   Browser: Chrome 95.0.4638.54 / macOS 10.15.7\n\n      17 | test.meta('type','smoke')(\"As a logged in user I should be able to create a task with today as due date\", async (t) => {\n      18 |     \n      19 |     await projectpage.createTask(TASKS.TODAY_TASK_NAME, TASKS.TODAY_TASK_DATE)\n      20 |     await t\n      21 |         .expect(projectpage.taskNameCreatedToday.exists)\n   --------------------------------------------\n    &rarr; 22 |         .ok()\n   --------------------------------------------\n      23 | });\n      24 | \n      25 | test.meta(\"type\",\"regression\")(\"As a logged in user I should be able to create a task with tomorrow as due date\", async (t) => {\n      26 |     await projectpage.createTask(TASKS.TOMORROW_TASK_NAME, TASKS.TOMORROW_TASK_DATE)\n      27 |     await t\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:22:10)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:240)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:578)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create a task with today as due date</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a logged in user I should be able to create a task with tomorrow as due date",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create a task with tomorrow as due date",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create a task with tomorrow as due date",
+            "result": {
+              "duration": 19863,
+              "error_message": "1) AssertionError: expected false to be truthy\n\n   Browser: Chrome 95.0.4638.54 / macOS 10.15.7\n\n      24 | \n      25 | test.meta(\"type\",\"regression\")(\"As a logged in user I should be able to create a task with tomorrow as due date\", async (t) => {\n      26 |     await projectpage.createTask(TASKS.TOMORROW_TASK_NAME, TASKS.TOMORROW_TASK_DATE)\n      27 |     await t\n      28 |         .expect(projectpage.taskNameCreatedTomorrow.exists)\n   --------------------------------------------\n    &rarr; 29 |         .ok()\n   --------------------------------------------\n      30 | });\n      31 | \n      32 | test.meta(\"type\",\"regression\")(\"As a logged in user I should be able to create 10 tasks with today as due date\", async (t) => {\n      33 |     await projectpage.createTask(TASKS.TODAY_TASK_NAME, TASKS.TODAY_TASK_DATE,10)\n      34 |     await t\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:29:10)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:240)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:578)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create a task with tomorrow as due date</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      },
+      {
+        "id": "ScenarioAs a logged in user I should be able to create 10 tasks with today as due date",
+        "keyword": "Scenario",
+        "line": 0,
+        "name": "As a logged in user I should be able to create 10 tasks with today as due date",
+        "skipped": false,
+        "sourceLine": "undefined",
+        "status": "failed",
+        "steps": [
+          {
+            "hidden": false,
+            "keyword": ">",
+            "match": {
+              "location": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1:0"
+            },
+            "name": "As a logged in user I should be able to create 10 tasks with today as due date",
+            "result": {
+              "duration": 46427,
+              "error_message": "1) AssertionError: expected false to be truthy\n\n   Browser: Chrome 95.0.4638.54 / macOS 10.15.7\n\n      31 | \n      32 | test.meta(\"type\",\"regression\")(\"As a logged in user I should be able to create 10 tasks with today as due date\", async (t) => {\n      33 |     await projectpage.createTask(TASKS.TODAY_TASK_NAME, TASKS.TODAY_TASK_DATE,10)\n      34 |     await t\n      35 |         .expect(projectpage.taskNameCreatedToday.exists)\n   --------------------------------------------\n    &rarr; 36 |         .ok()\n   --------------------------------------------\n      37 |     });\n\n      at <anonymous> (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:36:10)\n      at asyncGeneratorStep (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:240)\n      at _next (/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:3:578)",
+              "status": "failed"
+            },
+            "tags": [],
+            "text": [
+              "<a href=\"#\">As a logged in user I should be able to create 10 tasks with today as due date</a>"
+            ]
+          }
+        ],
+        "tags": [],
+        "type": "scenario",
+        "uri": ""
+      }
+    ],
+    "id": "Create Task Tests",
+    "keyword": "Feature",
+    "line": 0,
+    "metadata": {
+      "browser": {
+        "name": "chrome",
+        "version": "95.0.4638.54"
+      },
+      "device": "macOS",
+      "platform": {
+        "name": "osx",
+        "version": "10.15.7"
+      },
+      "reportTime": "2021-10-19T20:12:44.058Z",
+      "startTime": "2021-10-19T20:11:06.793Z"
+    },
+    "name": "Create Task Tests",
+    "runInfo": {
+      "endTime": "2021-10-19T20:12:44.058Z",
+      "passed": 0,
+      "startTime": "2021-10-19T20:11:06.793Z",
+      "testCount": 3,
+      "userAgents": [
+        "Chrome 95.0.4638.54 / macOS 10.15.7"
+      ],
+      "warnings": [
+        "The \"filter\" option from the configuration file will be ignored."
+      ]
+    },
+    "skipped": false,
+    "tags": [
+      {
+        "line": 0,
+        "name": "@logged"
+      },
+      {
+        "line": 0,
+        "name": "@user"
+      },
+      {
+        "line": 0,
+        "name": "@create"
+      },
+      {
+        "line": 0,
+        "name": "@tasks"
+      },
+      {
+        "line": 0,
+        "name": "@today"
+      },
+      {
+        "line": 0,
+        "name": "@due"
+      },
+      {
+        "line": 0,
+        "name": "@date"
+      },
+      {
+        "line": 0,
+        "name": "@task"
+      },
+      {
+        "line": 0,
+        "name": "@tomorrow"
+      },
+      {
+        "line": 0,
+        "name": "@tests"
+      }
+    ],
+    "uri": "/Users/cesar.guzman/Desktop/Todoist/pom/test/CreateTask.test.js:1"
+  }
+]
