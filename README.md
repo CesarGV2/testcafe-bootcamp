@@ -26,5 +26,5 @@ using Testcafe and POM pattern to creates the automated test. For the test repor
 
 
 ***Note:***
-- the Test Case: *'As a user I should not be able to login with incorrect email and password'* should be ignore in order to be ale to test the login fixture, due to a Todist restriction about the nuber of attemp on the loggin.
+- The Test Case: *'As a user I should not be able to login with incorrect email and password'* should be ignore in order to be able to test the login fixture, due to a Todist restriction about the nuber of attemp on the loggin.
 - The .env file it supposed to not be attached, it is on this repository in order to make easier the review of this Framework.
