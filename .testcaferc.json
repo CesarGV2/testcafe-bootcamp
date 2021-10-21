@@ -2,5 +2,5 @@
     "assertionTimeout": 8000,
     "pageLoadTimeout": 8000,
     "selectorTimeout": 8000,
-    "speed": 0.9
+    "speed": 1.0
 }

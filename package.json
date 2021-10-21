@@ -16,6 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "dotenv": "10.0.0",
+    "faker": "^5.5.3",
     "testcafe": "1.16.1",
     "testcafe-reporter-cucumber-json": "6.3.0"
   },

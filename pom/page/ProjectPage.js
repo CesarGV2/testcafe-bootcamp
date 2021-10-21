@@ -1,6 +1,7 @@
 import { Selector, t } from "testcafe";
 import {TASKS,PROJECTS} from '../data/Constants'
 import commonpage from "../page/CommonPage"
+import faker from "faker";
 
 class ProjectPage {
     constructor(){
@@ -29,34 +30,36 @@ class ProjectPage {
         this.editProjectOption = Selector('.icon_menu_item__content').withExactText('Edit project')
     }
 
-    async createTask(taskname,date,numberOfTask = 1) {
+    async createTask(taskname,date) {
         await t
         .click(this.addTaskButton)
         // .wait(500)
         if(date==='Today'){
-            for(let i=0; i< numberOfTask; i++)
-            {
                 await t
                 .typeText(this.taskNameInput,taskname,{paste:true})
                 .click(this.creatTaskButton)
-            }
 
         } else{
-            for(let i=0; i< numberOfTask; i++)
-            {
                 await t
                 .typeText(this.taskNameInput,taskname,{paste:true})
                 .click(this.taskDateOption) 
                 .click(this.taskDateTomorrow) 
                 .click(this.creatTaskButton) 
-            }
-            await t
-               
                 .click(commonpage.upcoming)
                 .click(this.tomorrowTasks) 
-           }
+            }
     }
 
+    async createManyTask(taskname,numberOfTask){
+       await t.click(this.addTaskButton)
+        for(let i=0; i< numberOfTask; i++)
+        {
+            await t
+            .typeText(this.taskNameInput,taskname + i,{paste:true})
+            .click(this.creatTaskButton)
+
+        }
+    }
 
     async deleteTask(){
         while(await this.taskCreated.exists)
