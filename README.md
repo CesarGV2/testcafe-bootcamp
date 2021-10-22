@@ -11,9 +11,9 @@ using Testcafe and POM pattern to creates the automated test. For the test repor
 -  test-smoke: runs all the TC of the smoke suite.
 -  test-login:runs all the test for login feature.
 -  test-loginHeadless: runs all the test for login feature on chrome y firefox on headless mode.
--  test-createTask: runs all the tests for Create Task feature.
--  test-createProject: run all the tests for Create Project feature.
--  test:runs the full Suite of Testcases (Login, Task, Project)
+-  test-task: runs all the tests for Create Task feature.
+-  test-project: run all the tests for Create Project feature.
+-  test-all:runs the full Suite of Testcases (Login, Task, Project)
 -  ### Report Creation
 -  create-report: after run any of the previous scripts use this script to generate a visual report of the results on a webrowser
    - command: *npm run create-report.*
