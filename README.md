@@ -9,17 +9,11 @@ using Testcafe and POM pattern to creates the automated test. For the test repor
 3. Open a new terminal and run *$npm install*
  ## Run Scripts
 -  test-smoke: runs all the TC of the smoke suite.
-   - command: *npm run test-smoke*.
 -  test-login:runs all the test for login feature.
-   - command: *npm run test-login*.
 -  test-loginHeadless: runs all the test for login feature on chrome y safari on headless mode.
-   - command: *npm run test-loginHeadless*
-- test-createTask: runs all the tests for Create Task feature.
-   - command: *npm run test-createTask*
+-  test-createTask: runs all the tests for Create Task feature.
 -  test-createProject: run all the tests for Create Project feature.
-   - command: *npm run test-createProject*
 -  test:runs the full Suite of Testcases (Login, Task, Project)
-   - command: *npm run test*
 -  ### Report Creation
 -  create-report: after run any of the previous scripts use this script to generate a visual report of the results on a webrowser
    - command: *npm run create-report.*
