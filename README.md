@@ -10,7 +10,7 @@ using Testcafe and POM pattern to creates the automated test. For the test repor
  ## Run Scripts
 -  test-smoke: runs all the TC of the smoke suite.
 -  test-login:runs all the test for login feature.
--  test-loginHeadless: runs all the test for login feature on chrome y safari on headless mode.
+-  test-loginHeadless: runs all the test for login feature on chrome y firefox on headless mode.
 -  test-createTask: runs all the tests for Create Task feature.
 -  test-createProject: run all the tests for Create Project feature.
 -  test:runs the full Suite of Testcases (Login, Task, Project)
