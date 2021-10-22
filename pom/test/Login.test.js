@@ -1,5 +1,4 @@
 import { CREDENTIALS, URLS } from "../data/Constants";
-import homePage from "../page/homePage";
 import loginpage from '../page/LoginPage'
 import projectpage from '../page/ProjectPage'
 
