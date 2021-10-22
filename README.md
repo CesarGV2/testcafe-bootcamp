@@ -3,11 +3,11 @@ Todoist - Testcafe Automation bootcamp
 This project is aimed to anyone on the corporation ho wants to test E2E scenarios on Todois webpage 
 using Testcafe and POM pattern to creates the automated test. For the test report the cucumber reporter is used.
 
-## To start you need to clone this repository
-- $git clone https://github.com/CesarGV2/testcafe-bootcamp.git
-## install node dependencies
-- $npm install node
-## Run Scripts
+## Installation
+1. Clone the repository *$git clone https://github.com/CesarGV2/testcafe-bootcamp.git*
+2. Go to the porejcts folder on a IDE
+3. Open a new terminal and run *$npm install*
+ ## Run Scripts
 -  test-smoke: runs all the TC of the smoke suite.
    - command: *npm run test-smoke*.
 -  test-login:runs all the test for login feature.
