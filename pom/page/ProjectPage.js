@@ -31,14 +31,13 @@ class ProjectPage {
     async createTask(taskname,date) {
         await t
         .click(this.addTaskButton)
+        .typeText(this.taskNameInput,taskname,{paste:true})
         if(date==='Today'){
                 await t
-                .typeText(this.taskNameInput,taskname,{paste:true})
                 .click(this.creatTaskButton)
 
         } else{
                 await t
-                .typeText(this.taskNameInput,taskname,{paste:true})
                 .click(this.taskDateOption) 
                 .click(this.taskDateTomorrow) 
                 .click(this.creatTaskButton) 
