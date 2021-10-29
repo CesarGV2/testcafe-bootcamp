@@ -6,6 +6,8 @@ import commonpage from '../page/CommonPage'
 fixture.meta('test','createTask')('Create Task Tests')
     .beforeEach(async (t) => {
         await t.useRole(STANDARD_USER)
+        // added in order to solve a problem in headless mode
+        .maximizeWindow()
     })
     
     .afterEach(async (t) => {
