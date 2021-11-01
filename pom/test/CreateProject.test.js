@@ -14,7 +14,7 @@ fixture.meta('test','createProject')('Create Project Tests')
         await projectpage.deleteProject()
         await t
             .wait(TIMERS.API_WAIT)
-            .expect(projectpage.projectName.exists)
+            .expect(commonpage.projectName.exists)
             .notOk()
     })
 

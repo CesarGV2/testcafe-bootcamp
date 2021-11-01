@@ -1,6 +1,6 @@
 import { CREDENTIALS, URLS } from "../data/Constants";
 import loginpage from '../page/LoginPage'
-import projectpage from '../page/ProjectPage'
+import TaskPage from '../page/TaskPage'
 
 
 fixture.meta('test','login')('Login test')
@@ -18,7 +18,7 @@ test.meta("type","regression")('As a user I should not be able to login with inc
 test.meta('type','smoke')('As a user I should be able to login with valid credentials', async (t) => {
     await loginpage.submitLoginForm(CREDENTIALS.STANDARD_USER.USERNAME,CREDENTIALS.STANDARD_USER.PASSWORD)
     await t
-        .expect(projectpage.projectName.exists)
+        .expect(TaskPage.projectName.exists)
         .ok();
     
 });
