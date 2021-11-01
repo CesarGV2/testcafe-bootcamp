@@ -11,7 +11,7 @@ class TaskPage{
         this.taskNameCreated = Selector('.markdown_content')
         this.taskDateOption = Selector('.item_due_selector')
         this.taskDateTomorrow = Selector('.scheduler-suggestions-item-label').withExactText('Tomorrow')
-        this.tomorrowTasks = Selector('a').withText('Tomorrow')
+        
         this.taskCreated = Selector('.task_list_item')
         this.moreActionsButton = Selector('.item_actions_more')
         this.deleteTaskButton = Selector('.icon_menu_item__content').withExactText('Delete task')
