@@ -2,6 +2,7 @@ import TaskPage from '../page/TaskPage'
 import {STANDARD_USER} from '../data/Roles'
 import {TASKS,TIMERS} from '../data/Constants'
 import commonpage from '../page/CommonPage'
+import UpcomingPage from '../page/UpcomingPage';
 
 fixture.meta('test','createTask')('Create Task Tests')
     .beforeEach(async (t) => {
@@ -31,7 +32,7 @@ test.meta('type','regression')('As a logged in user I should be able to create a
     await TaskPage.createTask(TASKS.TOMORROW_TASK_NAME, TASKS.TOMORROW_TASK_DATE)
     await t
         .click(commonpage.upcoming)
-        .click(TaskPage.tomorrowTasks) 
+        .click(UpcomingPage.tomorrowTasks) 
         .expect(TaskPage.taskNameCreated.withExactText(TASKS.TOMORROW_TASK_NAME).exists)
         .ok()
         .wait(TIMERS.API_WAIT)
